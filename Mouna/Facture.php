@@ -1,5 +1,31 @@
-<?php
-$Connect = mysqli_connect( "127.0.0.1", "root", "", "tdparfumerie-3");
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/58f1dd562a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="dashboard.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Dashboard</title>
+    <script type="text/javascript">
+    var larg, haut;
+
+    haut = (document.body.clientHeight);
+
+
+
+    var d = document.getElementByClassName("changement");
+
+    d.style.height = haut + "px";
+    </script>
+</head><?php
+$Connect = mysqli_connect( "127.0.0.1", "root", "", "parfumerie");
 if(!$Connect){
     echo"erreur connexion";
     
@@ -26,22 +52,22 @@ if($ResultatDemandeCommande =$Connect->query($QueryCommande)){
     $ResultatFacture =  $Connect->query($QueryNumFacture);
     $numFacture = mysqli_fetch_row($ResultatFacture);
 
-    echo"<table> <tr><td> Facebook : $infoClient[4]</td> </tr> <tr> <td> E mail : $infoClient[6] </td> </tr> <tr> <td> Numéro de téléphone : $infoClient[7] </td> </tr>
+    echo"<div class='table-responsive table--no-card m-b-40' style='width: 600px; margin-left:1000px'><table > <tr><td> Facebook : $infoClient[4]</td> </tr> <tr> <td> E mail : $infoClient[6] </td> </tr> <tr> <td> Numéro de téléphone : $infoClient[7] </td> </tr>
      <tr> <td> Addresse : $infoClient[3] </td> </tr> 
      <tr> <td> Nom : $infoClient[1] </td> </tr>  
      <tr> <td> Prenom : $infoClient[2] </td> </tr>
      <tr> <td> Code Client: $infoClient[0] </td> </tr>  </table>
-     
+     </div>
      <H1> Facture </h1>
 
-
-     <table>
+        <div >
+     <table style='width: 1200px; margin-left:30px'>
      <tr> <td> No. Commande : $infoCommande[0]</td> </tr>
      <tr> <td> Date Commande : $infoCommande[2]</td> </tr> 
-     <tr> <td> No. Commande : $infoCommande[0]</td> </tr>
+     
      <tr> <td> No. Facture : $numFacture[0] </td> </tr>
      <tr> <td> Date Facture : $numFacture[1] </td> </tr>
-     </table>
+     </table></div>
      ";
 
      //Determinons les valeurs de la facture
@@ -53,7 +79,7 @@ if($ResultatDemandeCommande =$Connect->query($QueryCommande)){
          $i=0;
          while($infoProduitCommande = mysqli_fetch_row($RQueryProduitCommande)){
             $i++; 
-            $QnomProduit = "Select designation from produit where numProduit = $infoProduitCommande[1]";
+            $QnomProduit = "Select NomProduit from produit where numProduit = $infoProduitCommande[1]";
             $RnomProduit = $Connect->query($QnomProduit);
 
             $designation = mysqli_fetch_row($RnomProduit)[0];

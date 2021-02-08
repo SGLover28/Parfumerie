@@ -1,5 +1,7 @@
+
+
 <?php
-$Connect = mysqli_connect( "127.0.0.1", "root", "", "tdparfumerie-3");
+$Connect = mysqli_connect( "127.0.0.1", "root", "", "parfumerie");
 if(!$Connect){echo"erreur connexion";
     
     }else{
@@ -55,7 +57,7 @@ if(isset($_SESSION["query"])){
          //calcul coût commande:
          $nomProduits[$i] = $_POST[$name];
          $listQtes[$i] = $_POST[$qte]; 
-         $Qpropduit = "SELECT `PrixAchat`, `numproduit`, `stockProduit`  FROM `produit` where `designation`= '$nomProduits[$i]'";
+         $Qpropduit = "SELECT `PrixAchat`, `numproduit`, `stockProduit`  FROM `produit` where `nomProduit`= '$nomProduits[$i]'";
          
         if($Rproduits = $Connect->query($Qpropduit)){
         $Rproduit = mysqli_fetch_row($Rproduits);
@@ -98,7 +100,7 @@ if(isset($_SESSION["query"])){
          //calcul coût commande:
          $nomCadeau[$i] = $_POST[$name];
          $listQtes[$i] = $_POST[$qte]; 
-         $Qpropduit = "SELECT `nbPointCadeau`, `numCadeau`, `stockCadeau`  FROM `cadeau` where `designation`= '$nomCadeau[$i]'";
+         $Qpropduit = "SELECT `nbPointCadeau`, `numCadeau`, `stockCadeau`  FROM `cadeau` where `NomProduit`= '$nomCadeau[$i]'";
          
         if($Rproduits = $Connect->query($Qpropduit)){
         $Rproduit = mysqli_fetch_row($Rproduits);

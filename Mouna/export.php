@@ -2,7 +2,7 @@
 
 //Pour cette partie j'ai retrouvé le code issus de https://www.codexworld.com/export-data-to-excel-in-php/ en changant les valeurs nécessaires
 
-$Connect = mysqli_connect( "127.0.0.1", "root", "", "tdparfumerie-3");
+$Connect = mysqli_connect( "127.0.0.1", "root", "", "parfumerie");
 if(!$Connect){
     echo"erreur connexion";
     

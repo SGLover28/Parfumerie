@@ -69,24 +69,28 @@ $_SESSION = array();
 //deux possibilités: créer une commande oou la modifier (il y a l'option suppression dans la modification de commande)
 ?>
 <div id="espaceGestion" style="position:absolute; right:0; top: 25%; height : 10% ;width :75% ">
+<H1>Ajouter une nouvelle commande</H1>
 <form action="CreerCommande.php" method="POST">
-    <input type="number" name="qte"> nombre de pruit à commander   </input>
-    <input type = "number" name = "Cqte"> nombre de cadeau </input>
-    <button type="submit" class="bouttonDefault">Ajouter une commande</button>
+    <input class="form-control me-2" type="number" name="qte"> nombre de pruit à commander   </input>
+    <input class="form-control me-2" type = "number" name = "Cqte"> nombre de cadeau </input></p>
+    <button class="btn" type="submit" class="bouttonDefault">Ajouter une commande</button>
    
 </form>
+
+<H1>Modifier une commande</H1>
 <form action="ModifierCommande.php" method="POST">
-    <input name="IdCommande" class= "inputDefault"/>
-    <button type="submit">Modifier cette commande</button>
+    <input placeholder ='le numéro de commande' name="IdCommande" class="form-control me-2"/>
+    <button class="btn" type="submit">Modifier cette commande</button>
 </form>
+<H1>Affichez une facture </H1>
 <form action="Facture.php" method="POST">
-    <input name="IdCommande" class= "inputDefault"/>
-    <button type="submit">Afficher la facture</button>
+    <input  placeholder ='le numéro de commande' type='number' name="IdCommande" class="form-control me-2"/>
+    <button class="btn" type="submit">Afficher la facture</button>
 </form>
 
 <form action ='export.php'>
 
-<button type='submit'> Exporter l'ensemble des commandes</button>
+<button class="btn" type='submit'> Exporter l'ensemble des commandes</button>
 </form>
 </div>
 

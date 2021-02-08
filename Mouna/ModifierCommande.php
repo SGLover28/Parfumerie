@@ -1,6 +1,6 @@
 <?php
 session_start();
-$Connect = mysqli_Connect("127.0.0.1", "root", "", "tdparfumerie-3" );
+$Connect = mysqli_Connect("127.0.0.1", "root", "", "parfumerie" );
 
 
 
@@ -95,7 +95,7 @@ if(isset($_SESSION["valider"])){
     echo $Query;
 
     if($Connect->multi_query($Query)){
-        echo "La commande est bien modifier";
+        echo "La commande est bien modifiée";
     }else{
         echo"pb avec dans le passage de la commande:\n ". mysqli_error($Connect);
     }
@@ -112,10 +112,14 @@ $QCommande = "Select * from produitCommande where numcommande = ".$_SESSION['IdC
 
 
 if($RCommande = $Connect->query($QCommande)){
-    $EnsembleAEcho .= "<form method ='POST' action=''> <H1> Produit</H1> <table class= ''> <th> nom <td>prix<td>quantité </td><td>supp<td>";
+   
     $i=0;
     while($idProduit = mysqli_fetch_row($RCommande)){
-        $QListeProduit[$i] = " Select designation, PrixAchat, stockProduit from produit where NumProduit = ".$idProduit[1];
+        if($i==0){
+            $EnsembleAEcho .= "<form method ='POST' action=''> <H1> Produit</H1> <table class= ''> <th> nom <td>prix<td>quantité </td><td>supp<td>";
+        }
+
+        $QListeProduit[$i] = " Select NomProduit, PrixAchat, stockProduit from produit where NumProduit = ".$idProduit[1];
         $_SESSION['qteOriginale'.$i] = $idProduit[2];
         
         $_SESSION['numProduit'.$i] = $idProduit[1];
@@ -146,15 +150,22 @@ if($RCommande = $Connect->query($QCommande)){
 
   
     //De même pour les cadeaux de la commande
-$QCommande = "Select * from CadeauCommande where numcommande = ".$_SESSION['IdCommande'];
+$QCommande = "Select * from `CadeauCommande` where `NumCommande` = ".$_SESSION['IdCommande'];
 
 
 
 if($RCommande = $Connect->query($QCommande)){
-    $EnsembleAEcho .= "<H1> Cadeaux </H1> <table class= ''> <th> Cadeau <td>prix<td>quantité </td><td>supp<td>";
+    
     $j=0;
     while($idCadeau = mysqli_fetch_row($RCommande)){
-        $QListeCadeau[$j] = " Select designation, nbPointCadeau, stockCadeau from cadeau where NumCadeau = ".$idCadeau[1];
+
+        if($j==0){
+            if($i==0){
+                $EnsembleAEcho .= "<form method ='POST' action=''>";
+            }
+            $EnsembleAEcho .= "<H1> Cadeaux </H1> <table class= ''> <th> Cadeau <td>prix<td>quantité </td><td>supp<td>";
+        }
+        $QListeCadeau[$j] = " Select NomProduit, nbPointCadeau, stockCadeau from cadeau where NumCadeau = ".$idCadeau[1];
         $_SESSION['qteCadeauOriginale'.$j] = $idCadeau[2];
         $_SESSION['numCadeau'.$j] = $idCadeau[1];
         
@@ -175,7 +186,7 @@ if($RCommande = $Connect->query($QCommande)){
 
     }
 
-}echo"la commande n'a pas de cadeau";
+}
   
     $_SESSION['nbProduit'] = $i;
     $_SESSION['nbCadeau'] =$j;
