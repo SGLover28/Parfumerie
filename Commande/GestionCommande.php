@@ -26,5 +26,10 @@ $_SESSION = array();
     <button type="submit">Afficher la facture</button>
 </form>
 
+<form action ='export.php'>
+
+<button type='submit'> Exporter l'ensemble des commandes</button>
+</form>
+
 
 

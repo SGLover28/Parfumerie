@@ -14,7 +14,7 @@ session_start();
 
 $fraisLivraison = 5;
 $fraisService = 1;
-//Le long de cette page nous allons générer une string query qui modifiera les tables commande, produit, cadeau, produitcommande et cadeaucommande 
+//Tout le long de cette page nous allons générer une string query qui modifiera les tables commande, produit, cadeau, produitcommande et cadeaucommande 
 
 if(isset($_SESSION["query"])){  
     $Query = $_SESSION["query"];
@@ -156,7 +156,7 @@ if(isset($_SESSION["query"])){
 
         $pointTT = $pointTT +$pointsG;
 
-        $QpointsAjout = "Update cartefidelite Set nbpoints=".$pointTT." where codeClient=".$numClient.""; 
+        $QpointsAjout = "Update cartefidelite Set nbpoints=".$pointTT." where codeClient=".$numClient; 
     }
 
 
