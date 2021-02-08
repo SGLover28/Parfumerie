@@ -6,6 +6,7 @@ session_start();
      
   }
 $selectdb=mysqli_select_db($db,"parfumerie");
+if(isset($_SESSION['identifiantClient'])){
 $identifiant=$_SESSION['identifiantClient'] ;
 $clientQuery="SELECT * FROM client where Email='$identifiant'";
 $client=mysqli_query($db,$clientQuery);
@@ -14,8 +15,8 @@ $idClient=$rowclient['CodeClient'];
 $fideliteQuery= "SELECT * from cartefidelite WHERE CodeClient=$idClient" ;
 $fidelite=mysqli_query($db,$fideliteQuery);
 $rowFidelite=mysqli_fetch_array($fidelite);
+}
 
- 
 
 ?>
 <!DOCTYPE html>

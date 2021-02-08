@@ -220,7 +220,7 @@ if ($newStock<0){
   $sqlQuery="UPDATE `cartefidelite` SET `NbPoints`='$nbpointenTotal',`membership`='$nomMembership' WHERE CodeClient ='$codeclient' ";
   $sql=mysqli_query($db,$sqlQuery);
 
-  $commandequery= "INSERT INTO `commande`(`CodeClient`, `DateCommande`, `MontantTotalCommande`, `nbPointsGagnes`, `pointsTotals`, `StatutCommande`) VALUES ('$codeclient',CURDATE(),'$prixTotal','$prixTotal','$nbpointenTotal',''passée'')";
+  $commandequery= "INSERT INTO `commande`(`CodeClient`, `DateCommande`, `MontantTotalCommande`, `nbPointsGagnes`, `pointsTotals`, `StatutCommande`) VALUES ('$codeclient',CURDATE(),'$prixTotal','$prixTotal','$nbpointenTotal','passée')";
   $commande=mysqli_query($db,$commandequery);
 
   $codeCommandeProduit=mysqli_insert_id($db);

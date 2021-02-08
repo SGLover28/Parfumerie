@@ -65,9 +65,8 @@ $clientsquery= "SELECT * FROM `client`";
                     style="margin-right: 9px;"></i>Ajout des clients</a>
             <a class="nav-link" href="GestionCommande.php"><i class="fas fa-cart-plus" style="margin-right: 9px;"></i>Gestion des
                 commandes</a>
-            <a class="nav-link" href=""><i class="fas fa-tasks" style="margin-right: 9px;"></i>Génération de
-                factures</a>
-            <a class="nav-link" href=""><i class="fas fa-download" style="margin-right: 9px;"></i>Exportation liste de
+            <a class="nav-link" href="Redirection.php"><i class="fas fa-tasks" style="margin-right: 9px;"></i>Continuer entant que client</a>
+            <a class="nav-link" href="export.php"><i class="fas fa-download" style="margin-right: 9px;"></i>Exportation liste de
                 commandes</a>
                 <a class="nav-link" href="connexion.php"><i class="fas fa-sign-out-alt" style="margin-right: 9px;"></i>Déconnexion</a>
         </div>
